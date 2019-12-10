@@ -7,8 +7,18 @@ border: 1px solid lightgrey;
 border-radius: 2px;
 padding: 8px;
 margin-bottom: 8px;
-background-color: white;
+background-color: ${props => props.isDragging ? 'lightgreen' : 'white'};
+
+display: flex;
 `;
+
+/*const Handle = styled.div`
+width: 20px;
+height: 20px;
+background-color: orange;
+border-radius: 4px;
+margin-right: 8px;
+`;*/
 
 export default class Task extends React.Component {
 	render(){
@@ -17,6 +27,7 @@ export default class Task extends React.Component {
 				{(provided, snapshot) => (
 					<Container
 						ref={provided.innerRef}
+						isDragging={snapshot.isDragging}
 					    {...provided.draggableProps}
 					    {...provided.dragHandleProps}
 					> 
@@ -27,3 +38,5 @@ export default class Task extends React.Component {
 		); 
 	}
 }
+
+//						<Handle  {...provided.dragHandleProps} />
